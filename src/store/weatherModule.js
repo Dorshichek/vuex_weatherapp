@@ -18,7 +18,12 @@ export const weatherModule = {
       state.cityWeather = object;
     },
     setCityName(state, cityName) {
-      state.citiesNames.push(cityName);
+      const hasCityInArray = state.citiesNames.includes(cityName);
+      if (!hasCityInArray) {
+        state.citiesNames.push(cityName);
+      } else {
+        alert("Город уже добавлен");
+      }
     },
     deleteCity(state, cityName) {
       state.citiesNames.shift(cityName);
@@ -31,13 +36,14 @@ export const weatherModule = {
       try {
         const request = await fetch(url);
         const response = await request.json();
-        console.log(response);
         if (response.cod === SERVER.STATUS_OK) {
           state.commit("setCityName", city);
           state.commit("setCityWeather", response);
+        } else {
+          alert(response.message);
         }
       } catch (e) {
-        console.log(e);
+        alert(e.message);
       }
     },
     deleteCity(state, cityName) {

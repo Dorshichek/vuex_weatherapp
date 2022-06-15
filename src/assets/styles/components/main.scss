@@ -2,6 +2,9 @@
 
 body {
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   background-color: #c0c0c0;
   color: $black;
   font-size: $default-FontSize;
@@ -14,6 +17,7 @@ body {
   height: 462px;
   width: 621px;
   padding: 14px 9px 13px 12px;
+
 
   &__wrapper {
     height: 100%;
@@ -112,7 +116,9 @@ body {
   &__empty {
     font-size: 20px;
     color: red;
-    padding: 35px 17px 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
   }
 
   &__item {
